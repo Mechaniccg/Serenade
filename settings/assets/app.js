@@ -13,7 +13,8 @@ if (addBtn && list) {
   addBtn.addEventListener("click", () => {
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Enter Twitch name (one per box)";
+    input.placeholder = "Enter Twitch name (leave blank to keep current settings)";
+    input.classList.add("input--small");
     list.appendChild(input);
     input.focus();
   });

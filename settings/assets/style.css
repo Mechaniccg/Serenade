@@ -43,6 +43,15 @@ h1 {
   overflow: hidden;
 }
 
+.item.featured {
+  border-color: rgba(88, 101, 242, 0.5);
+  box-shadow: 0 0 0 1px rgba(88, 101, 242, 0.25), 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.item.featured .header {
+  background: rgba(88, 101, 242, 0.1);
+}
+
 .header {
   width: 100%;
   padding: 14px 16px;
@@ -93,6 +102,10 @@ input::placeholder {
 input:focus {
   outline: none;
   border-color: var(--accent);
+}
+
+.input--small {
+  max-width: 360px;
 }
 
 .list-row {
