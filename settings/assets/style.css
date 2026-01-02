@@ -1,67 +1,73 @@
+:root{
+  /* Discord-like dark palette */
+  --bg: #0e0f14;          /* page background */
+  --card: #1a1c24;        /* accordion cards */
+  --stroke: #2a2d36;      /* borders */
+  --text: #ffffff;        /* ALL text white */
+  --accent: #5865f2;      /* Discord blurple */
+}
+
 * {
   box-sizing: border-box;
-  font-family: "Inter", system-ui, sans-serif;
 }
 
 body {
   margin: 0;
-  background: #0f1115;
-  color: #ffffff;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
 }
 
+/* Page container */
 .container {
-  max-width: 720px;
-  margin: 48px auto;
-  padding: 0 20px;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
 h1 {
-  font-size: 26px;
+  margin: 0 0 18px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 24px;
+  color: var(--text);
 }
 
-/* Accordion */
+/* Accordion layout */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .accordion-item {
-  background: #1a1c23;
+  background: var(--card);
+  border: 1px solid var(--stroke);
   border-radius: 10px;
-  margin-bottom: 14px;
   overflow: hidden;
-  border: 1px solid #23262f;
 }
 
+/* Accordion header */
 .accordion-header {
   width: 100%;
-  background: none;
+  background: transparent;
   border: none;
-  color: #ffffff;
-  padding: 18px 20px;
-  font-size: 15px;
-  font-weight: 500;
+  color: var(--text);
   text-align: left;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .accordion-header:hover {
-  background: #20232c;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.accordion-header::after {
-  content: "▾";
-  float: right;
-  transition: transform 0.2s ease;
-  opacity: 0.8;
-}
-
-.accordion-item.active .accordion-header::after {
-  transform: rotate(180deg);
-}
-
+/* Accordion content */
 .accordion-content {
   display: none;
-  padding: 16px 20px 20px;
-  background: #14161c;
+  padding: 16px;
+  border-top: 1px solid var(--stroke);
 }
 
 .accordion-item.active .accordion-content {
@@ -69,22 +75,63 @@ h1 {
 }
 
 /* Inputs */
-
-input {
+input[type="text"] {
   width: 100%;
-  padding: 12px 14px;
-  font-size: 14px;
+  padding: 11px 12px;
   border-radius: 8px;
-  border: 1px solid #2a2d36;
-  background: #0f1115;
-  color: #ffffff;
-}
-
-input::placeholder {
-  color: #8b8f9b;
-}
-
-input:focus {
+  border: 1px solid var(--stroke);
+  background: #0f1118;
+  color: var(--text);
   outline: none;
-  border-color: #5865f2;
+  font-size: 14px;
+}
+
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* Labels */
+.field-label {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Twitch list header */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* Plus button */
+.plus-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.plus-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* Stack of twitch inputs */
+.list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
 }
