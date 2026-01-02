@@ -95,6 +95,10 @@ input:focus {
   border-color: var(--accent);
 }
 
+.input--small {
+  max-width: 360px;
+}
+
 .list-row {
   display: flex;
   align-items: center;
