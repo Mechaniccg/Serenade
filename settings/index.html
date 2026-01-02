@@ -2,157 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Serenade Settings</title>
+  <title>Serenade – Channel Settings</title>
 
-  <!-- Google Font (Discord-ish, clean) -->
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-main: #2b2d31;
-      --bg-card: #1e1f22;
-      --bg-input: #313338;
-      --bg-button: #5865f2;
-      --text-main: #ffffff;
-      --text-muted: #b5bac1;
-      --border: #3f4147;
-    }
-
-    * {
-      box-sizing: border-box;
-      font-family: "Inter", sans-serif;
-    }
-
-    body {
-      margin: 0;
-      padding: 40px;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-    }
-
-    h1 {
-      margin-bottom: 24px;
-      font-size: 28px;
-      font-weight: 600;
-    }
-
-    .card {
-      background-color: var(--bg-card);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .field input {
-      width: 100%;
-      padding: 10px 12px;
-      background-color: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-main);
-      font-size: 14px;
-    }
-
-    .field input::placeholder {
-      color: #8b8d91;
-    }
-
-    .twitch-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .twitch-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .twitch-row input {
-      flex: 1;
-    }
-
-    .add-btn {
-      background-color: var(--bg-button);
-      border: none;
-      border-radius: 6px;
-      color: white;
-      font-size: 18px;
-      padding: 0 14px;
-      cursor: pointer;
-    }
-
-    .add-btn:hover {
-      opacity: 0.9;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
-  <h1>Serenade Settings</h1>
+  <div class="container">
+    <h1>Channel Configuration</h1>
 
-  <!-- Twitch Notifications Section -->
-  <div class="card">
-    <h2>Twitch Notifications</h2>
+    <div class="accordion">
 
-    <!-- Channel ID -->
-    <div class="field">
-      <label>Discord Channel ID for Notifications</label>
-      <input
-        type="text"
-        placeholder="e.g. 123456789012345678"
-        id="twitchChannelId"
-      >
-    </div>
-
-    <!-- Twitch Channels List -->
-    <div class="field">
-      <label>Twitch Channels</label>
-
-      <div class="twitch-list" id="twitchList">
-        <!-- Dynamic rows go here -->
+      <div class="accordion-item">
+        <button class="accordion-header">Welcome Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
       </div>
 
-      <div style="margin-top: 10px;">
-        <button class="add-btn" onclick="addTwitchChannel()">+</button>
+      <div class="accordion-item">
+        <button class="accordion-header">Case Files Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
       </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Audit Log Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Welcome Card Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Leaving Card Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Twitch Notification Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Trovo Notification Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">Kick Notification Channel</button>
+        <div class="accordion-content">
+          <input type="text" placeholder="Enter Channel ID">
+        </div>
+      </div>
+
+      <!-- NEW SECTION: Twitch Notifications -->
+      <div class="accordion-item">
+        <button class="accordion-header">Twitch Notifications</button>
+        <div class="accordion-content">
+
+          <!-- Box 1: Channel ID to send notifications (same style as others) -->
+          <label class="field-label">Notification Channel ID</label>
+          <input type="text" placeholder="Enter Channel ID">
+
+          <!-- Box 2: List of twitch names with plus button -->
+          <div class="list-header">
+            <label class="field-label">Twitch Channels</label>
+            <button type="button" class="plus-btn" id="twitchAddBtn" aria-label="Add Twitch Channel">+</button>
+          </div>
+
+          <div id="twitchList" class="list-stack">
+            <!-- Starts with one empty box by default -->
+            <input type="text" placeholder="Enter Twitch name (one per box)">
+          </div>
+
+        </div>
+      </div>
+      <!-- END NEW SECTION -->
+
     </div>
   </div>
 
-  <script>
-    function addTwitchChannel() {
-      const list = document.getElementById("twitchList");
-
-      const row = document.createElement("div");
-      row.className = "twitch-row";
-
-      const input = document.createElement("input");
-      input.type = "text";
-      input.placeholder = "Twitch username (one per box)";
-
-      row.appendChild(input);
-      list.appendChild(row);
-    }
-  </script>
-
+  <script src="../assets/app.js"></script>
 </body>
 </html>
